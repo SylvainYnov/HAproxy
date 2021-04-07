@@ -1,0 +1,54 @@
+version: '3'
+networks:
+  frontend:
+  backend:
+    #driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.0.0/24
+services:
+
+  haproxy:
+    image: haproxy
+    ports:
+      - "8080:80"
+    restart: always
+    volumes:
+      - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    hostname: myHaproxy
+    networks:
+      - frontend
+      - backend
+          #ipv4_address: 192.168.0.10
+
+  whoami1:
+    image: containous/whoami
+    restart: always
+    hostname: whoami-1
+    networks:
+      backend:
+        ipv4_address: 192.168.0.11
+    
+  whoami2:
+    image: containous/whoami
+    restart: always
+    hostname: whoami-2
+    networks:
+      backend:
+        ipv4_address: 192.168.0.12
+
+  whoami3:
+    image: containous/whoami
+    restart: always
+    hostname: whoami-3
+    networks:
+      backend:
+        ipv4_address: 192.168.0.13
+
+  whoami4:
+    image: containous/whoami
+    restart: always
+    hostname: whoami-4
+    networks:
+      backend:
+        ipv4_address: 192.168.0.14
