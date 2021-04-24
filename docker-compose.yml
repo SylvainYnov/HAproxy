@@ -1,8 +1,7 @@
 version: '3'
 networks:
-  frontend:
   backend:
-    #driver: bridge
+    driver: bridge
     ipam:
       config:
         - subnet: 192.168.0.0/24
@@ -17,9 +16,8 @@ services:
       - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
     hostname: myHaproxy
     networks:
-      - frontend
-      - backend
-          #ipv4_address: 192.168.0.10
+      backend:
+          ipv4_address: 192.168.0.10
 
   whoami1:
     image: containous/whoami
