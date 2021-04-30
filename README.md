@@ -1,6 +1,6 @@
 # HAproxy
 
-Ce projet permet de tester le fonctionnement d'un load balancer.
+Ce projet permet de tester le fonctionnement d'un load balancer avec diffèrents conteneurs Docker.
 Il utilise HAproxy et sa fonction de roundrobin.
 On accède aux conteneurs herbergeant le service web sur le port 8080.
 Depuis la machine hôte sur `localhost:8080`, et depuis internet via `ipPublicHost:8080`.
